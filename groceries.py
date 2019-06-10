@@ -28,23 +28,23 @@ products = [
 
 # PRODUCTS
 
-#item_count = len(products)
-#print("--------------")
-#print("THERE ARE " + str(item_count) + " PRODUCTS:")
-#print("--------------")
-#
-#def sort_product_name(product):
-#    return product["name"]
-#
-#sorted_products = sorted(products, key = sort_product_name)
-#
-##print(sorted_products)
-#
-#for p in sorted_products:
-#    price_usd = "${0:.2f}".format(p["price"])
-#    print("+ " + p["name"] + " (" + price_usd + ")")
-#
-#
+item_count = len(products)
+print("--------------")
+print("THERE ARE " + str(item_count) + " PRODUCTS:")
+print("--------------")
+
+def sort_product_name(product):
+    return product["name"]
+
+sorted_products = sorted(products, key = sort_product_name)
+
+#print(sorted_products)
+
+for p in sorted_products:
+    price_usd = "${0:.2f}".format(p["price"])
+    print("+ " + p["name"] + " (" + price_usd + ")")
+
+
 # DEPARTMENTS 
 
 departments = []
@@ -67,7 +67,11 @@ unique_departments.sort()
 for d in unique_departments:
     matching_products = [p for p in products if p["department"] == d]
     matching_products_count = len(matching_products)
-    print(d.title() + " (" + str(matching_products_count) + " products)")
+    if matching_products_count > 1:
+        label = "products"
+    else: 
+        label = "product"
+    print("+ " + d.title() + " (" + str(matching_products_count) + " " + label + ")")
 
 # pprint(products)
 
