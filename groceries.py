@@ -1,6 +1,6 @@
 # groceries.py
 
-#from pprint import pprint
+# from pprint import pprint
 
 def to_usd(x):
     price_usd = "${0:,.2f}".format(x)
@@ -36,7 +36,8 @@ if __name__ == "__main__":
 
     item_count = len(products)
     print("--------------")
-    print("THERE ARE " + str(item_count) + " PRODUCTS:")
+    #print("THERE ARE " + str(item_count) + " PRODUCTS:")
+    print(f"THERE ARE {item_count} PRODUCTS:")
     print("--------------")
 
     def sort_product_name(product):
