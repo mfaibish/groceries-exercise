@@ -25,27 +25,44 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
-item_count = len(products)
+
+# PRODUCTS
+
+#item_count = len(products)
+#print("--------------")
+#print("THERE ARE " + str(item_count) + " PRODUCTS:")
+#print("--------------")
+#
+#def sort_product_name(product):
+#    return product["name"]
+#
+#sorted_products = sorted(products, key = sort_product_name)
+#
+##print(sorted_products)
+#
+#for p in sorted_products:
+#    price_usd = "${0:.2f}".format(p["price"])
+#    print("+ " + p["name"] + " (" + price_usd + ")")
+#
+#
+# DEPARTMENTS 
+
+departments = []
+
+for p in products:
+    if p["department"] not in departments:
+        departments.append(p["department"])
+    
+
+department_count = len(departments)
+
 print("--------------")
-print("There are " + str(item_count) + " products:")
+print("THERE ARE " + str(department_count) + " DEPARTMENTS:")
 print("--------------")
 
-def sort_product_name(product):
-    return product["name"]
+for d in departments:
+    print(d)
 
-sorted_products = sorted(products, key = sort_product_name)
-
-#print(sorted_products)
-
-for p in sorted_products:
-    price_usd = "${0:.2f}".format(p["price"])
-    print("+ " + p["name"] + " (" + price_usd + ")")
-
-
-
-print("--------------")
-print("There are " + str(item_count) + " products:")
-print("--------------")
 # pprint(products)
 
 # TODO: write some Python code here to produce the desired output
