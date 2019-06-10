@@ -42,6 +42,10 @@ for p in sorted_products:
     print("+ " + p["name"] + " (" + price_usd + ")")
 
 
+
+print("--------------")
+print("There are " + str(item_count) + " products:")
+print("--------------")
 # pprint(products)
 
 # TODO: write some Python code here to produce the desired output
