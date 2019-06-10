@@ -2,7 +2,13 @@
 
 #from pprint import pprint
 
-products = [
+def to_usd(x):
+    price_usd = "${0:,.2f}".format(x)
+    return price_usd
+
+if __name__ == "__main__":
+
+    products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
     {"id":3, "name": "Robust Golden Unsweetened Oolong Tea", "department": "beverages", "aisle": "tea", "price": 2.49},
@@ -23,81 +29,82 @@ products = [
     {"id":18, "name": "Pizza for One Suprema Frozen Pizza", "department": "frozen", "aisle": "frozen pizza", "price": 12.50},
     {"id":19, "name": "Gluten Free Quinoa Three Cheese & Mushroom Blend", "department": "dry goods pasta", "aisle": "grains rice dried goods", "price": 3.99},
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
-] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
+    ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
 
-# PRODUCTS
+    # PRODUCTS
 
-item_count = len(products)
-print("--------------")
-print("THERE ARE " + str(item_count) + " PRODUCTS:")
-print("--------------")
+    item_count = len(products)
+    print("--------------")
+    print("THERE ARE " + str(item_count) + " PRODUCTS:")
+    print("--------------")
 
-def sort_product_name(product):
-    return product["name"]
+    def sort_product_name(product):
+        return product["name"]
 
-sorted_products = sorted(products, key = sort_product_name)
+    sorted_products = sorted(products, key = sort_product_name)
 
-#print(sorted_products)
+    #print(sorted_products)
 
-for p in sorted_products:
-    price_usd = "${0:.2f}".format(p["price"])
-    print("+ " + p["name"] + " (" + price_usd + ")")
-
-
-# DEPARTMENTS 
-
-departments = []
-
-for p in products:
-    departments.append(p["department"])
-    #if p["department"] not in departments: #or can use an if statement 
-     #   departments.append(p["department"])
-    
-unique_departments = list(set(departments))
-
-department_count = len(unique_departments)
-
-print("--------------")
-print("THERE ARE " + str(department_count) + " DEPARTMENTS:")
-print("--------------")
-
-unique_departments.sort()
-
-for d in unique_departments:
-    matching_products = [p for p in products if p["department"] == d]
-    matching_products_count = len(matching_products)
-    if matching_products_count > 1:
-        label = "products"
-    else: 
-        label = "product"
-    print("+ " + d.title() + " (" + str(matching_products_count) + " " + label + ")")
-
-# pprint(products)
-
-# TODO: write some Python code here to produce the desired output
+    for p in sorted_products:
+        # price_usd = "${0:.2f}".format(p["price"])
+        price_usd = to_usd(p["price"])
+        print("+ " + p["name"] + " (" + price_usd + ")")
 
 
-#--------------
-#THERE ARE 20 PRODUCTS:
-#--------------
-# + All-Seasons Salt ($4.99)
-# + Chocolate Fudge Layer Cake ($18.50)
-# + Chocolate Sandwich Cookies ($3.50)
-# + Cut Russet Potatoes Steam N' Mash ($4.25)
-# + Dry Nose Oil ($21.99)
-# + Fresh Scent Dishwasher Cleaner ($4.99)
-# + Gluten Free Quinoa Three Cheese & Mushroom Blend ($3.99)
-# + Green Chile Anytime Sauce ($7.99)
-# + Light Strawberry Blueberry Yogurt ($6.50)
-# + Mint Chocolate Flavored Syrup ($4.50)
-# + Overnight Diapers Size 6 ($25.50)
-# + Peach Mango Juice ($1.99)
-# + Pizza For One Suprema Frozen Pizza ($12.50)
-# + Pomegranate Cranberry & Aloe Vera Enrich Drink ($4.25)
-# + Pure Coconut Water With Orange ($3.50)
-# + Rendered Duck Fat ($9.99)
-# + Robust Golden Unsweetened Oolong Tea ($2.49)
-# + Saline Nasal Mist ($16.00)
-# + Smart Ones Classic Favorites Mini Rigatoni With Vodka Cream Sauce ($6.99)
-# + Sparkling Orange Juice & Prickly Pear Beverage ($2.99)
+    # DEPARTMENTS 
+
+    departments = []
+
+    for p in products:
+        departments.append(p["department"])
+        #if p["department"] not in departments: # or can use an if statement 
+         #   departments.append(p["department"])
+
+    unique_departments = list(set(departments))
+
+    department_count = len(unique_departments)
+
+    print("--------------")
+    print("THERE ARE " + str(department_count) + " DEPARTMENTS:")
+    print("--------------")
+
+    unique_departments.sort()
+
+    for d in unique_departments:
+        matching_products = [p for p in products if p["department"] == d]
+        matching_products_count = len(matching_products)
+        if matching_products_count > 1:
+            label = "products"
+        else: 
+            label = "product"
+        print("+ " + d.title() + " (" + str(matching_products_count) + " " + label + ")")
+
+    # pprint(products)
+
+    # TODO: write some Python code here to produce the desired output
+
+
+    #--------------
+    #THERE ARE 20 PRODUCTS:
+    #--------------
+    # + All-Seasons Salt ($4.99)
+    # + Chocolate Fudge Layer Cake ($18.50)
+    # + Chocolate Sandwich Cookies ($3.50)
+    # + Cut Russet Potatoes Steam N' Mash ($4.25)
+    # + Dry Nose Oil ($21.99)
+    # + Fresh Scent Dishwasher Cleaner ($4.99)
+    # + Gluten Free Quinoa Three Cheese & Mushroom Blend ($3.99)
+    # + Green Chile Anytime Sauce ($7.99)
+    # + Light Strawberry Blueberry Yogurt ($6.50)
+    # + Mint Chocolate Flavored Syrup ($4.50)
+    # + Overnight Diapers Size 6 ($25.50)
+    # + Peach Mango Juice ($1.99)
+    # + Pizza For One Suprema Frozen Pizza ($12.50)
+    # + Pomegranate Cranberry & Aloe Vera Enrich Drink ($4.25)
+    # + Pure Coconut Water With Orange ($3.50)
+    # + Rendered Duck Fat ($9.99)
+    # + Robust Golden Unsweetened Oolong Tea ($2.49)
+    # + Saline Nasal Mist ($16.00)
+    # + Smart Ones Classic Favorites Mini Rigatoni With Vodka Cream Sauce ($6.99)
+    # + Sparkling Orange Juice & Prickly Pear Beverage ($2.99)
